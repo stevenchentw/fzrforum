@@ -1,0 +1,24 @@
+<h1>這是首頁</h1>
+
+<ul>
+
+<% @events.each do |event| %>
+
+<table class ="table">
+    <th>
+    <%= event.topic %>
+    <%= event.article %>
+    </th>
+
+
+<td class="btn-group">
+<%= link_to '顯示', event_path(event) , :class => " btn btn-primary active "%>
+<%= link_to '修改', edit_event_path(event) ,:class => " btn btn-success active "%>
+<%= link_to '刪除', event_path(event) , :method => :delete, :class => " btn btn-danger active" %>
+</td>
+<% end %>
+</table>
+</ul>
+<%= link_to '新增', new_event_path, :class => " btn btn-primary active "%>
+<%= paginate @events %>
+
