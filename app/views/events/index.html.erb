@@ -12,6 +12,7 @@
 
 
 <td class="btn-group">
+<%= link_to '回覆', event_comments_path(event) ,:class => " btn btn-success active "%>
 <%= link_to '顯示', event_path(event) , :class => " btn btn-primary active "%>
 <%= link_to '修改', edit_event_path(event) ,:class => " btn btn-success active "%>
 <%= link_to '刪除', event_path(event) , :method => :delete, :class => " btn btn-danger active" %>
