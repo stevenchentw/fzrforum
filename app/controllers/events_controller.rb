@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index]
 
   before_action :set_event, :only => [ :show, :edit, :update, :destroy]
 
@@ -9,6 +10,9 @@ class EventsController < ApplicationController
 
   def show
   @page_title = @event.topic
+  @comment = Comment.new
+  @comments = @event.comments
+
   end
 
   def new
@@ -18,6 +22,8 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
 
+    @event.user = current_user
+
       if @event.save
         flash[:alert] = "建立成功"
         redirect_to events_url
@@ -26,6 +32,14 @@ class EventsController < ApplicationController
         render :action => :new
         flash[:alert] = "請輸入標題"
       end
+
+      @comment = Comment.new( comment_params )
+      if @comment.save
+      redirect_to event_path( @event )
+      else
+      render :action => :new
+      end
+
   end
 
     def update
