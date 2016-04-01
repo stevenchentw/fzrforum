@@ -6,4 +6,6 @@ class Event < ActiveRecord::Base
   belongs_to :user
 
   has_many :comments
+
+  delegate :name, :to => :category, :prefix => true, :allow_nil => true
 end

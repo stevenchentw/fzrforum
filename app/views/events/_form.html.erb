@@ -1,6 +1,11 @@
 <h1> <%= f.label :topic, "標題: "%> </h1>
 <%= f.text_field :topic %>
 
+<%= f.label :category_id, "種類: "%>
+<%= f.select :category_id, Category.all.map{|x| [x.name, x.id]} %>
+
 <h1> <%= f.label :article, "內容: "%> </h1>
 <%= f.text_area :article %>
+
+
 

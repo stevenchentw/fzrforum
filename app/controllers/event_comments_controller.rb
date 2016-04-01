@@ -15,6 +15,7 @@ class EventCommentsController < ApplicationController
   end
 
   def create
+
     @comment = @event.comments.build( comment_params )
     if @comment.save
       redirect_to event_path( @event )

@@ -32,14 +32,6 @@ class EventsController < ApplicationController
         render :action => :new
         flash[:alert] = "請輸入標題"
       end
-
-      @comment = Comment.new( comment_params )
-      if @comment.save
-      redirect_to event_path( @event )
-      else
-      render :action => :new
-      end
-
   end
 
     def update
@@ -70,5 +62,6 @@ end
 def set_event
   @event = Event.find(params[:id])
 end
+
 
 end

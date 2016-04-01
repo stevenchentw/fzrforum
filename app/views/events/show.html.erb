@@ -1,4 +1,5 @@
 <P> 這是標題：<%= @event.topic %></P>
+<P> 這是種類：<%= @event.category_name  %></P>
 <P> 這是內容：<%= simple_format(@event.article) %> </P>
 
 <%= form_for @comment, :url => event_comments_path(@event) do |f| %>
