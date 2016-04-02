@@ -7,4 +7,7 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :comments
 
+  has_many :likes
+  has_many :like_topics, :through => :likes, :source => :event
+
 end

@@ -1,4 +1,6 @@
+<body class = "container">
 <%= form_for @comment, :url => event_comment_path(@event, @comment), :html => { :method => :patch } do |f| %>
    <%= f.text_field :comment %>
    <%= f.submit %>
 <% end %>
+</body>
