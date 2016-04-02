@@ -5,33 +5,31 @@
 
   <div class = "topic_area" >
 
-    <%= link_to '新增', new_event_path, :class => " btn btn-primary active "%>
+    <%= link_to '新增文章', new_event_path, :class => " btn btn-primary active "%>
 
+    <table class ="table" border='2'>
+        <tr>
+          <td width="50" align="center" valign = "middle">類別</td>
+          <td width="300" align="center" valign = "middle">內容</td>
+          <td width="80" align="center" valign = "middle">使用者</td>
+          <td width="100" align="center" valign = "middle">時間</td>
+          <td width="200" align="center" valign = "middle">操作</td>
+        </tr>
     <% @events.each do |event| %>
+          <tr>
+            <td align="center" valign = "middle"><%= event.category_name %> </td>
+            <td><%= event.topic %> </td>
+            <td align="center" valign = "middle"><%= event.user.first_name %> </td>
+            <td align="center" valign = "middle"><%= event.created_at.strftime('%F') %> </td>
 
-      <table class ="table">
-
-        <th class = " category_topic">
-          <%= event.category_name %>
-          <%= event.topic %>
-        </th>
-
-        <th class = "user_data">
-          <%= event.user.first_name %>
-          <%= event.created_at.strftime('%F') %>
-        </th>
-
-
-        <th class="btn-group">
-          <%= link_to '顯示', event_path(event) , :class => " btn btn-primary active "%>
-          <%= link_to '修改', edit_event_path(event) ,:class => " btn btn-success active "%>
-          <%= link_to '刪除', event_path(event) , :method => :delete, :class => " btn btn-danger active" %>
-        </th>
-
-      </table>
-
-    <% end %>
-
+            <td class="btn-group" align="center" valign = "middle">
+              <%= link_to '顯示', event_path(event) , :class => " btn btn-primary active "%>
+              <%= link_to '修改', edit_event_path(event) ,:class => " btn btn-success active "%>
+              <%= link_to '刪除', event_path(event) , :method => :delete, :class => " btn btn-danger active" %>
+            </td>
+          </tr>
+     <% end %>
+    </table>
   </div>
 
   <%= paginate @events %>
