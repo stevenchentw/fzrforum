@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<header class = "container">
+
+ <navbar class = "main-nav-bar">
+
+      <div class = "logo">
+        在這邊要放LOGO
+      </div>
+
+      <div class = "login">
 
       <% if current_user %>
           Hi! <%= current_user.email %>
@@ -17,6 +26,12 @@
           <%= link_to('註冊', new_registration_path(:user)) %> |
           <%= link_to('登入', new_session_path(:user)) %>
       <% end %>
+
+      </div>
+
+ </navbar>
+
+</header>
 
 
 <p style="color: green"><%= flash[:notice] %></p>

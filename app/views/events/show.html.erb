@@ -1,25 +1,24 @@
-<P> 這是標題：<%= @event.topic %></P>
-<P> 這是種類：<%= @event.category_name  %></P>
-<P> 這是內容：<%= simple_format(@event.article) %> </P>
+<body class = "container">
 
-<%= form_for @comment, :url => event_comments_path(@event) do |f| %>
-   <%= f.text_field :comment %>
-   <%= f.submit %>
-<% end %>
+  <P> 這是標題：<%= @event.topic %></P>
+  <P> 這是種類：<%= @event.category_name  %></P>
+  <P> 這是內容：<%= simple_format(@event.article) %> </P>
 
-
-<ul>
-<% @comments.each do |comment| %>
-  <li>
-    <%= comment.comment %>
-    <%= link_to 'edit', edit_event_comment_path(@event, comment) %>
-    <%= link_to 'destroy', event_comment_path(@event, comment),:method => :delete %>
-  </li>
-<% end %>
-</ul>
+  <%= form_for @comment, :url => event_comments_path(@event) do |f| %>
+     <%= f.text_field :comment %>
+     <%= f.submit %>
+  <% end %>
 
 
+  <ul>
+  <% @comments.each do |comment| %>
+    <li>
+      <%= comment.comment %>
+      <%= link_to 'edit', edit_event_comment_path(@event, comment) %>
+      <%= link_to 'destroy', event_comment_path(@event, comment),:method => :delete %>
+    </li>
+  <% end %>
+  </ul>
+  <p><%= link_to '回到首頁', events_path %></p>
 
-
-
-<p><%= link_to '回到首頁', events_path %></p>
+</body>
