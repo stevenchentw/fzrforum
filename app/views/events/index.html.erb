@@ -22,7 +22,7 @@
             <td align="center" valign = "middle"><%= event.user.first_name %> </td>
             <td align="center" valign = "middle"><%= event.created_at.strftime('%F') %> </td>
 
-            <td class="btn-group" align="center" valign = "middle">
+            <td align="center" valign = "middle">
               <%= link_to '顯示', event_path(event) , :class => " btn btn-primary active "%>
               <%= link_to '修改', edit_event_path(event) ,:class => " btn btn-success active "%>
               <%= link_to '刪除', event_path(event) , :method => :delete, :class => " btn btn-danger active" %>
@@ -36,3 +36,5 @@
 
   </ul>
 </body>
+
+

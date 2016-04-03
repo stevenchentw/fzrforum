@@ -1,5 +1,6 @@
 class EventCommentsController < ApplicationController
     before_action :find_event
+    before_action :authenticate_user!
 
   def index
     @comments = @event.comments
@@ -20,7 +21,8 @@ class EventCommentsController < ApplicationController
     if @comment.save
       redirect_to event_path( @event )
     else
-      render :action => :new
+      flash[:alert] = "請輸入內容"
+      redirect_to event_path( @event )
     end
   end
 

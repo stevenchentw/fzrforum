@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   before_action :set_event, :only => [ :show, :edit, :update, :destroy]
 
   def index
-    @events = Event.page(params[:page]).per(10)
+    @events = Event.order("id DESC").page(params[:page]).per(10)
   end
 
   def show
