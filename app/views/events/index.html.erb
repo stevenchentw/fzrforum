@@ -8,17 +8,23 @@
     <%= link_to '新增文章', new_event_path, :class => " btn btn-primary active "%>
 
     <p>
-    <%= link_to "ID ASC", events_path( :sort => "topic") %>
-    <%= link_to "ID DESC", events_path( :sort => "") %>
+        <%= search_form_for @q do |f| %>
+          <%= f.label :topic_cont %>
+          <%= f.search_field :topic_cont %>
+          <%= f.submit "Search" %>
+        <% end %>
+    </p>
 
-    <%= link_to "最後更新時間", events_path( :sort => "updated") %>
+    <p>
+    <%= sort_link(@q, :topic) %>
+    <%= sort_link(@q, :updated_at, "最後更新時間") %>
     </p>
 
 
 
     <table class ="table" border='2'>
         <tr>
-          <td width="50" align="center" valign = "middle">類別</td>
+          <td width="80" align="center" valign = "middle">類別</td>
           <td width="300" align="center" valign = "middle">內容</td>
           <td width="80" align="center" valign = "middle">使用者</td>
           <td width="100" align="center" valign = "middle">時間</td>

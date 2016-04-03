@@ -6,14 +6,15 @@ class EventsController < ApplicationController
 
   def index
 
-    # @q = Event.ransack(params[:q])
-    # @events = @q.result(distinct: true)
+     @q = Event.ransack(params[:q])
+     @events = @q.result(distinct: true)
 
-    @events = Event.page(params[:page]).per(10)
         if params[:sort] == "topic"
         @events = @events.order("topic")
         @events = @events.order("topic DESC")
       end
+
+   @events = @events.page(params[:page]).per(10)
 
   end
 
