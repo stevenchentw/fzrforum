@@ -7,6 +7,15 @@
 
     <%= link_to '新增文章', new_event_path, :class => " btn btn-primary active "%>
 
+    <p>
+    <%= link_to "ID ASC", events_path( :sort => "topic") %>
+    <%= link_to "ID DESC", events_path( :sort => "") %>
+
+    <%= link_to "最後更新時間", events_path( :sort => "updated") %>
+    </p>
+
+
+
     <table class ="table" border='2'>
         <tr>
           <td width="50" align="center" valign = "middle">類別</td>
