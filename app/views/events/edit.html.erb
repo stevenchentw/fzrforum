@@ -1,6 +1,13 @@
 <body class = "container">
+  <% if @event.logo.exists? %>
+    <%= image_tag ( @event.logo.url) %>
+  <% else %>
+     None
+  <% end %>
 <%= form_for @event, :url =>event_path(@event), :method => :patch do |f| %>
     <%= render :partial => 'form', :locals => { :f => f } %>
     <%= f.submit "Update" %>
 <% end %>
+
+  <p><%= link_to '回到首頁', events_path %></p>
 </body>

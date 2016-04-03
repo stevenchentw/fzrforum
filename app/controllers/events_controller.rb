@@ -35,6 +35,12 @@ class EventsController < ApplicationController
   end
 
     def update
+
+
+      if params[:_remove_logo] == "1"
+        @event.logo = nil
+      end
+
       if @event.update(event_params)
         redirect_to :action => :show, :id => @event
         flash[:notice] = "修改成功"
@@ -56,7 +62,7 @@ class EventsController < ApplicationController
 private
 
 def event_params
-  params.require(:event).permit(:topic, :article, :category_id)
+  params.require(:event).permit(:topic, :article, :category_id, :logo)
 end
 
 def set_event

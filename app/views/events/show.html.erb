@@ -4,6 +4,12 @@
   <P> 這是種類：<%= @event.category_name  %></P>
   <P> 這是內容：<%= simple_format(@event.article) %> </P>
 
+  <% if @event.logo.exists? %>
+    <%= image_tag ( @event.logo.url) %>
+  <% else %>
+     None
+  <% end %>
+
 
   <% like = @event.finy_like_by(current_user) %>
 
