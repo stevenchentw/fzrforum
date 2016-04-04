@@ -241,8 +241,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   fb_config = Rails.application.config_for(:facebook)
 
-  config.omniauth :facebook, fb_config["262683007398393"], fb_config["
-ca0c91b22423becd5d52de5eab7e9408"],
+  config.omniauth :facebook,"1124625784256529","cd3c4f16232a320c0fcfdd4faa0c2b52",
                   :scope => 'public_profile,email', :info_fields => 'email,name'
 
   # ==> Warden configuration

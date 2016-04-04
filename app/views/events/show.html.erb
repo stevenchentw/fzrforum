@@ -3,6 +3,7 @@
   <P> 這是標題：<%= @event.topic %></P>
   <P> 這是種類：<%= @event.category_name  %></P>
   <P> 這是內容：<%= simple_format(@event.article) %> </P>
+  <P> 留言數量：<%= @event.comments.count %></P>
 
   <% if @event.logo.exists? %>
     <%= image_tag ( @event.logo.url) %>
