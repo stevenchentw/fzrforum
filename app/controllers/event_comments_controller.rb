@@ -21,6 +21,7 @@ class EventCommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
+      @event.save
       redirect_to event_path( @event )
     else
       flash[:alert] = "請輸入內容"

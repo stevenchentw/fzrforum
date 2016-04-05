@@ -18,6 +18,12 @@
   <%= render :partial => "like", :locals => { :like => like } %>
   </div>
 
+<p> 誰按過讚? </p>
+  <% @likes.each do |like| %>
+    <li>
+      <%= like.user.try(:first_name) %>
+    </li>
+  <% end %>
 
 
   <%= form_for @comment, :url => event_comments_path(@event) do |f| %>
@@ -30,7 +36,7 @@
   <% @comments.each do |comment| %>
     <li>
       <%= comment.comment %>
-      <%= comment.user.first_name %>
+      <%= comment.user.try(:first_name) %>
       <%= link_to 'edit', edit_event_comment_path(@event, comment) %>
       <%= link_to 'destroy', event_comment_path(@event, comment),:method => :delete %>
     </li>

@@ -15,6 +15,7 @@ class EventsController < ApplicationController
   @page_title = @event.topic
   @comment = Comment.new
   @comments = @event.comments
+  @likes = @event.likes
 
   end
 
