@@ -4,6 +4,9 @@ class EventsController < ApplicationController
 
   before_action :set_event, :only => [ :show, :edit, :update, :destroy]
 
+  def about
+  end
+
   def index
    @q = Event.ransack(params[:q])
    @events = @q.result(distinct: true)

@@ -8,6 +8,10 @@ Rails.application.routes.draw do
       resources :comments, :controller => 'event_comments'
       resources :likes
     end
+
+      get 'index' => 'abouts#index'
+      get 'about' => 'abouts#about'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
