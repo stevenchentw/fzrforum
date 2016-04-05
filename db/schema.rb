@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403054205) do
+ActiveRecord::Schema.define(version: 20160405040607) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -35,13 +35,15 @@ ActiveRecord::Schema.define(version: 20160403054205) do
     t.integer  "user_id"
     t.integer  "category_id"
     t.integer  "comment_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "description"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.integer  "comments_count",      default: 0
+    t.datetime "comments_created_at"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id"

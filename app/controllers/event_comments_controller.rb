@@ -16,8 +16,10 @@ class EventCommentsController < ApplicationController
   end
 
   def create
+    @comment = @event.comments.create( comment_params )
+    @event.comments_created_at  = @comment.created_at
+    @comment.user = current_user
 
-    @comment = @event.comments.build( comment_params )
     if @comment.save
       redirect_to event_path( @event )
     else
@@ -57,4 +59,8 @@ class EventCommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment)
   end
+  def event_params
+    params.require(:event).permit(:comments_created_at)
+  end
+
 end

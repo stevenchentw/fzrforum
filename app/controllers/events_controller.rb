@@ -5,13 +5,8 @@ class EventsController < ApplicationController
   before_action :set_event, :only => [ :show, :edit, :update, :destroy]
 
   def index
-     @q = Event.ransack(params[:q])
-     @events = @q.result(distinct: true)
-        if params[:sort] == "topic"
-        @events = @events.order("topic")
-        @events = @events.order("topic DESC")
-      end
-
+   @q = Event.ransack(params[:q])
+   @events = @q.result(distinct: true)
    @events = @events.page(params[:page]).per(10)
 
   end
@@ -76,6 +71,5 @@ end
 def set_event
   @event = Event.find(params[:id])
 end
-
 
 end

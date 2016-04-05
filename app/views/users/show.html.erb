@@ -1,19 +1,13 @@
-<body>
+<body class = "container">
 
-  <ul class="container">
-  <p>這是首頁</p>
+  <h1> 這是個人頁面！！</h1>
+  <P> First_name：<%= @user.first_name %></P>
+  <P> Last_name：<%= @user.last_name  %></P>
+  <P> E-mail：<%= @user.email %> </P>
+  <P> 上次登入時間：<%= @user.current_sign_in_at.strftime('%F')  + " " +@user.current_sign_in_at.strftime('%r') %></P>
 
-  <div class = "topic_area" >
-
-    <%= link_to '新增文章', new_event_path, :class => " btn btn-primary active "%>
-    <p>
-        <%= search_form_for @q do |f| %>
-          <%= f.label :topic_cont,"尋找文章" %>
-          <%= f.search_field :topic_cont %>
-          <%= f.submit "Search" %>
-        <% end %>
-    </p>
-    <table class ="table" border='2'>
+  <h2> 你的主題 </h2>
+  <table class ="table" border='2'>
         <tr>
           <td width="80" align="center" valign = "middle">
           <%= sort_link(@q, :category_name,"類別") %>
@@ -22,28 +16,22 @@
           <%= sort_link(@q, :topic,"標題") %>
           </td>
           <td width="60" align="center" valign = "middle">
-          <%= sort_link(@q, :user_id,"使用者") %>
-          </td>
-          <td width="60" align="center" valign = "middle">
-          <%= sort_link(@q, :comments_count,"留言數") %>
+          <%= sort_link(@q, :user,"留言數") %>
           </td>
           <td width="100" align="center" valign = "middle">
-          <%= sort_link(@q, :created_at,"發文時間") %>
-          </td>
-          <td width="100" align="center" valign = "middle">
-          <%= sort_link(@q, :created_at,"最後回覆") %>
+          <%= sort_link(@q, :updated_at,"發文時間") %>
           </td>
           <td width="120" align="center" valign = "middle">操作</td>
 
         </tr>
+
     <% @events.each do |event| %>
           <tr>
             <td align="center" valign = "middle"><%= event.category_name %> </td>
             <td><%=link_to event.topic, event_path(event) %> </td>
-            <td align="center" valign = "middle"><%= event.user.first_name %> </td>
              <td align="center" valign = "middle"><%= event.comments.count %> </td>
             <td align="center" valign = "middle"><%= event.created_at.strftime('%F')  + " " +  event.created_at.strftime('%r') %> </td>
-            <td align="center" valign = "middle"><%= event.created_at.strftime('%F')  + " " +  event.created_at.strftime('%r') %> </td>
+
             <td align="center" valign = "middle">
               <%= link_to '修改', edit_event_path(event) ,:class => " btn btn-success active "%>
               <%= link_to '刪除', event_path(event) , :method => :delete, :class => " btn btn-danger active" %>
@@ -51,11 +39,16 @@
           </tr>
      <% end %>
     </table>
-  </div>
 
-  <%= paginate @events %>
+<h2> 你的回覆 </h2>
+ <% @comments.each do |c| %>
+    <li>
+      <%= c.comment %>
+      <%=link_to c.event.topic, event_path(c.event) %>
+    </li>
+  <% end %>
 
-  </ul>
+
 </body>
-
-
+    <%= paginate @events %>
+    <p><%= link_to '回到首頁', events_path %></p>

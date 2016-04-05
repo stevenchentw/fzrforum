@@ -30,6 +30,7 @@
   <% @comments.each do |comment| %>
     <li>
       <%= comment.comment %>
+      <%= comment.user.first_name %>
       <%= link_to 'edit', edit_event_comment_path(@event, comment) %>
       <%= link_to 'destroy', event_comment_path(@event, comment),:method => :delete %>
     </li>

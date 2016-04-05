@@ -6,6 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -36,7 +37,7 @@
       <div class = "login">
 
       <% if current_user %>
-          Hi! <%= current_user.email %>
+          Hi! <%=link_to current_user.email, user_path(current_user),:method => :get%>
           <%= link_to "登入 Facebook", user_omniauth_authorize_path(:facebook), :class => "btn btn-primary" %>
           <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
           <%= link_to('修改密碼', edit_registration_path(:user)) %>
@@ -55,7 +56,6 @@
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:alert] %></p>
 <%= yield %>
-
 </div>
 </body>
 
