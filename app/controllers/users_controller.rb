@@ -7,13 +7,12 @@ class UsersController < ApplicationController
 
   def show
 
+    @likes = @user.likes
 
     @comments = Comment.where(user: @user)
-
     @q = Event.where(user: @user).ransack(params[:q])
     @events = @q.result(distinct: true)
     @events = @events.page(params[:page]).per(10)
-
 
   end
 

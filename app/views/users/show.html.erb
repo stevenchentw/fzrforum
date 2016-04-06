@@ -48,6 +48,14 @@
     </li>
   <% end %>
 
+<h2> 你的按讚 </h2>
+
+ <% a.each do |s| %>
+    <li>
+      <%= s.topic %>
+    </li>
+  <% end %>
+
 
 </body>
     <%= paginate @events %>

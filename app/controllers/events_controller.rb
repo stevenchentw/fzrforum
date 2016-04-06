@@ -19,6 +19,8 @@ class EventsController < ApplicationController
   @comment = Comment.new
   @comments = @event.comments
   @likes = @event.likes
+  ids = @likes.pluck(:event_id)
+  a = Event.where(:id=> ids)
 
   end
 
