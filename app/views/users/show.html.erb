@@ -38,7 +38,12 @@
             </td>
           </tr>
      <% end %>
+
+
+
     </table>
+
+    <%= paginate @events %>
 
 <h2> 你的回覆 </h2>
  <% @comments.each do |c| %>
@@ -47,16 +52,16 @@
       <%=link_to c.event.topic, event_path(c.event) %>
     </li>
   <% end %>
-
+<%= paginate @comments %>
 <h2> 你的按讚 </h2>
-
- <% a.each do |s| %>
+ <% @a.each do |i| %>
     <li>
-      <%= s.topic %>
+       <%=link_to i.topic, event_path(i) %>
     </li>
   <% end %>
+<%= paginate @a %>
 
 
 </body>
-    <%= paginate @events %>
+
     <p><%= link_to '回到首頁', events_path %></p>
