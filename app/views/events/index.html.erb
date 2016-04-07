@@ -14,6 +14,7 @@
         <% end %>
     </p>
     <table class ="table" border='2'>
+      <thead>
         <tr>
           <td width="80" align="center" valign = "middle">
           <%= sort_link(@q, :category_name,"類別") %>
@@ -37,30 +38,16 @@
           <%= sort_link(@q, :comments_created_at,"最後回覆") %>
           </td>
           <td width="120" align="center" valign = "middle">操作</td>
-
         </tr>
-    <% @events.each do |event| %>
-          <tr>
-            <td align="center" valign = "middle"><%= event.category_name %> </td>
-            <td><%=link_to event.topic, event_path(event) %> </td>
-            <td align="center" valign = "middle"><%= event.user.first_name %> </td>
-            <td align="center" valign = "middle"><%= event.comments.count %> </td>
-            <td align="center" valign = "middle"><%= event.likes.count %> </td>
-            <td align="center" valign = "middle"><%= event.created_at.strftime('%F') + " " +event.created_at.strftime('%R') %> </td>
-            <td align="center" valign = "middle"><%= display_comments_created_at_time(event) %> </td>
-
-
-            <td align="center" valign = "middle">
-              <%= link_to '修改', edit_event_path(event) %>
-              <%= link_to '刪除', event_path(event)  %>
-            </td>
-          </tr>
-     <% end %>
+      </thead>
+      <tbody id="events" >
+       <%= render @events %>
+      </tbody>
     </table>
   </div>
-
-  <%= paginate @events %>
-
+<div id="paginator">
+  <%= paginate @events, :remote => true %>
+</div>
   </ul>
 </body>
 
