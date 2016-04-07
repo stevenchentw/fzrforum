@@ -7,7 +7,9 @@
   <td align="center" valign = "middle"><%= event.created_at.strftime('%F') + " " +event.created_at.strftime('%R') %> </td>
   <td align="center" valign = "middle"><%= display_comments_created_at_time(event) %> </td>
   <td align="center" valign = "middle">
+  <% if current_user && event.user == current_user %>
     <%= link_to '修改', edit_event_path(event) %>
-    <%= link_to '刪除', event_path(event)  %>
+    <%= link_to '刪除', event_path(event),:method => :delete  %>
+  <% end %>
   </td>
 </tr>

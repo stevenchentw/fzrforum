@@ -60,8 +60,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = current_user.events.find( params[:id] )
     @event.destroy
-    redirect_to events_url
+    redirect_to :back
+
     flash[:alert] = "刪除成功"
   end
 
