@@ -45,10 +45,11 @@ class EventCommentsController < ApplicationController
   end
 
   def destroy
-    @comment = @event.comments.find( params[:id] )
+
+    @comment = current_user.comments.find( params[:id] )
     @comment.destroy
 
-    redirect_to event_path( @event )
+    redirect_to :back
   end
 
   protected

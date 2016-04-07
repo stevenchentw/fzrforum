@@ -37,10 +37,15 @@
     <li>
       <%= comment.comment %>
       <%= comment.user.try(:first_name) %>
+      <% if current_user && comment.user == current_user %>
       <%= link_to 'edit', edit_event_comment_path(@event, comment) %>
       <%= link_to 'destroy', event_comment_path(@event, comment),:method => :delete %>
+       <% end %>
     </li>
   <% end %>
+
+
+
   </ul>
   <p><%= link_to '回到首頁', events_path %></p>
 
