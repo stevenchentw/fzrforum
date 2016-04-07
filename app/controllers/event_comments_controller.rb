@@ -22,7 +22,12 @@ class EventCommentsController < ApplicationController
 
     if @comment.save
       @event.save
-      redirect_to event_path( @event )
+
+      respond_to do |format|
+      format.html { redirect_to event_path(@event) }
+      format.js # create.js.erb
+      end
+
     else
       flash[:alert] = "請輸入內容"
       redirect_to event_path( @event )
