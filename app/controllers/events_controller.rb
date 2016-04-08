@@ -10,8 +10,9 @@ class EventsController < ApplicationController
   def index
    @q = Event.ransack(params[:q])
    @events = @q.result(distinct: true)
+   @events = @events.where(category_id: params[:category_id]) if params[:category_id]
    @events = @events.page(params[:page]).per(8)
-
+   @categories = Category.all
   end
 
   def show

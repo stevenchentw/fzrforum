@@ -13,7 +13,17 @@
           <%= f.submit "Search" %>
         <% end %>
     </p>
+
+
+    <td>
+      <%= link_to "所有文章", events_path, :remote => true %>
+    <% @categories.each do |category| %>
+      <%= link_to category.name , "/events?category_id=#{category.id}", :remote => true %>
+    <% end %>
+    </td>
+
     <table class ="table" border='2'>
+
       <thead>
         <tr>
           <td width="80" align="center" valign = "middle">
