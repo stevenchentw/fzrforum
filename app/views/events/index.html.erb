@@ -1,8 +1,6 @@
 <body>
 
   <ul class="container">
-  <p>這是首頁</p>
-
   <div class = "topic_area" >
 
     <%= link_to '新增文章', new_event_path, :class => " btn btn-primary active "%>
@@ -16,11 +14,17 @@
 
 
     <td>
-      <%= link_to "所有文章", events_path, :remote => true %>
-    <% @categories.each do |category| %>
-      <%= link_to category.name , "/events?category_id=#{category.id}", :remote => true %>
-    <% end %>
+       <button class="btn btn-default" type="submit">
+       <%= link_to "所有文章", events_path, :remote => true %>
+       </button>
+       <% @categories.each do |category| %>
+       <button class="btn btn-default" type="submit">
+       <%= link_to category.name , "/events?category_id=#{category.id}", :remote => true %>
+       </button>
+       <% end %>
     </td>
+
+
 
     <table class ="table" border='2'>
 
@@ -47,7 +51,9 @@
           <td width="200" align="center" valign = "middle">
           <%= sort_link(@q, :comments_created_at,"最後留言") %>
           </td>
+          <% if current_user%>
           <td width="120" align="center" valign = "middle">操作</td>
+          <% end %>
         </tr>
       </thead>
       <tbody id="events" >

@@ -2,6 +2,7 @@ class AboutsController < ApplicationController
 
 
  def index
+    render layout: 'no_header'
  end
 
  def about

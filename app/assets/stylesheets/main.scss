@@ -1,0 +1,65 @@
+.container {
+  width: 1145px;
+  margin: 0 auto;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+// header
+.main_navbar {
+  text-align: center;
+  color: #fff;
+
+}
+
+.logo {
+  float: left;
+}
+
+.nav {
+  float: right;
+}
+
+.nav li {
+  float: left;
+  line-height: 60px;
+}
+
+.nav a {
+  padding: 0 15px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.login {
+  float: right;
+
+}
+
+// about
+.about_index {
+}
+
+.title {
+  text-align: center;
+}
+
+.enter_picture {
+  text-align: center;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+
+.enter {
+  line-height: 90px;
+}
+
+
+
+
+

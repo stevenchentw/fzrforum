@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= @page_title || "FZR / FZ2 / FZ1" %></title>
+  <title><%= @page_title || "FZR GARAGE" %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -24,21 +24,30 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-<body>
 
 <header class = "container">
 
- <navbar class = "main-nav-bar">
+ <navbar class = "main_navbar clearfix">
 
       <div class = "logo">
-         這邊要放LOGO
+         <img src="http://placehold.it/160x60">
       </div>
 
-      <div class = "login">
+      <div class ="nav clearfix">
+          <ul>
+          <li><a><%= link_to '關於本站', about_path %></a></li>
+          <li><a href="#">所有車種</a></li>
+          <li><a href="#">FZR</a></li>
+          <li><a href="#">FZ2</a></li>
+          <li><a href="#">FZ1</a></li>
+          <li><%= link_to '回到首頁', events_path %></l1>
+        </ul>
+      </div>
 
+ </navbar>
+       <div class = "login">
       <% if current_user %>
           Hi! <%=link_to current_user.email, user_path(current_user),:method => :get%>
-          <%= link_to "登入 Facebook", user_omniauth_authorize_path(:facebook), :class => "btn btn-primary" %>
           <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
           <%= link_to('修改密碼', edit_registration_path(:user)) %>
           <% else %>
@@ -47,12 +56,10 @@
           <%= link_to('登入', new_session_path(:user)) %>
       <% end %>
       </div>
-       <p><%= link_to '回到首頁', events_path %></p>
-
- </navbar>
 
 </header>
 <div class="container">
+<body>
 
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:alert] %></p>
