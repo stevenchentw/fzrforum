@@ -11,8 +11,10 @@ class EventsController < ApplicationController
    @q = Event.ransack(params[:q])
    @events = @q.result(distinct: true)
    @events = @events.where(category_id: params[:category_id]) if params[:category_id]
+   @events = @events.where(type_id: params[:type_id]) if params[:type_id]
    @events = @events.page(params[:page]).per(8)
    @categories = Category.all
+   @types = Type.all
   end
 
   def show
@@ -71,7 +73,7 @@ class EventsController < ApplicationController
 private
 
 def event_params
-  params.require(:event).permit(:topic, :article, :category_id, :logo)
+  params.require(:event).permit(:topic, :article, :category_id, :logo, :type_id)
 end
 
 def set_event

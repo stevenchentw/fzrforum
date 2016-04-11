@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :events do
       resources :comments, :controller => 'event_comments'
       resources :likes
+      resources :types, :controller => 'event_types'
     end
 
       get 'index' => 'abouts#index'

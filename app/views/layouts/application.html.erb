@@ -35,12 +35,21 @@
 
       <div class ="nav clearfix">
           <ul>
-          <li><a><%= link_to '關於本站', about_path %></a></li>
-          <li><a href="#">所有車種</a></li>
-          <li><a href="#">FZR</a></li>
-          <li><a href="#">FZ2</a></li>
-          <li><a href="#">FZ1</a></li>
-          <li><%= link_to '回到首頁', events_path %></l1>
+          <li><%= link_to '關於本站', about_path %></li>
+          <li><a>
+          <%= link_to "所有車種", events_path, :remote => true %>
+          </a></li>
+          <li><a>
+          <%= link_to "FZR" , "/events?type_id=1", :remote => true %>
+          </a></li>
+          <li><a>
+          <%= link_to "FZ2" , "/events?type_id=2", :remote => true %>
+          </a></li>
+          <li><a>
+          <%= link_to "FZ1" , "/events?type_id=3", :remote => true %>
+          </a></li>
+          <li><a><%= link_to '賣場', events_path %></a></l1>
+          <li><a><%= link_to '回到首頁', events_path %></a></l1>
         </ul>
       </div>
 

@@ -1,5 +1,6 @@
 <tr>
   <td align="center" valign = "middle"><%= event.category_name %> </td>
+  <td align="center" valign = "middle"><%= event.type_name%> </td>
   <td><%=link_to event.topic, event_path(event) %> </td>
   <td align="center" valign = "middle"><%= event.user.first_name %> </td>
   <td align="center" valign = "middle"><%= event.comments.count %> </td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406040143) do
+ActiveRecord::Schema.define(version: 20160411151933) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20160406040143) do
     t.integer  "comments_count",      default: 0
     t.datetime "comments_created_at"
     t.integer  "likes_count",         default: 0
+    t.integer  "type_id"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id"
@@ -52,6 +53,13 @@ ActiveRecord::Schema.define(version: 20160406040143) do
   create_table "likes", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

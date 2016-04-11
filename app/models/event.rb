@@ -4,6 +4,8 @@ class Event < ActiveRecord::Base
 
   belongs_to :category
 
+  belongs_to :type
+
   belongs_to :user
 
   has_many :comments
@@ -13,6 +15,7 @@ class Event < ActiveRecord::Base
 
 
   delegate :name, :to => :category, :prefix => true, :allow_nil => true
+  delegate :name, :to => :type, :prefix => true, :allow_nil => true
 
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
