@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= @page_title || "FZR GARAGE" %></title>
+  <title><%= @page_title || "FZR STUDIO" %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -25,36 +25,54 @@
    }(document, 'script', 'facebook-jssdk'));
 </script>
 
-<header class = "container">
+<div class="container">
+<body>
 
- <navbar class = "main_navbar clearfix">
+ <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">FZR STUDIO</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <%= link_to '關於本站', about_path %>
+                    </li>
+                    <li>
+                        <%= link_to "所有車種", events_path%>
+                    </li>
+                    <li>
+                        <%= link_to "FZR" , "/events?type_id=1"%>
+                    </li>
+                    <li>
+                        <%= link_to "FZ2" , "/events?type_id=2"%>
+                    </li>
+                    <li>
+                        <%= link_to "FZ1" , "/events?type_id=3"%>
+                    </li>
+                    <li>
+                        <%= link_to '賣場', events_path %>
+                    </li>
+                    <li>
+                       <%= link_to '回到首頁', events_path %>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-      <div class = "logo">
-         <img src="http://placehold.it/160x60">
-      </div>
-
-      <div class ="nav clearfix">
-          <ul>
-          <li><%= link_to '關於本站', about_path %></li>
-          <li><a>
-          <%= link_to "所有車種", events_path%>
-          </a></li>
-          <li><a>
-          <%= link_to "FZR" , "/events?type_id=1"%>
-          </a></li>
-          <li><a>
-          <%= link_to "FZ2" , "/events?type_id=2"%>
-          </a></li>
-          <li><a>
-          <%= link_to "FZ1" , "/events?type_id=3"%>
-          </a></li>
-          <li><a><%= link_to '賣場', events_path %></a></l1>
-          <li><a><%= link_to '回到首頁', events_path %></a></l1>
-        </ul>
-      </div>
-
- </navbar>
-       <div class = "login">
+<div class = "login">
       <% if current_user %>
           Hi! <%=link_to current_user.email, user_path(current_user),:method => :get%>
           <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
@@ -66,14 +84,17 @@
       <% end %>
       </div>
 
-</header>
-<div class="container">
-<body>
-
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:alert] %></p>
 <%= yield %>
-</div>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>FZR STUDIO &copy; Steven Chen 2016</p>
+                </div>
+            </div>
+        </footer>
 </body>
 
 </html>

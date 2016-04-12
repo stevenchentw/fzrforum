@@ -8,8 +8,6 @@ class EventsController < ApplicationController
   end
 
   def index
-   @q = Event.ransack(params[:q])
-   @events = @q.result(distinct: true)
 
    @events = Event.page(params[:page]).per(8)
 

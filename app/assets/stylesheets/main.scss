@@ -9,57 +9,26 @@
   clear: both;
 }
 
-// header
-.main_navbar {
-  text-align: center;
-  color: #fff;
-
-}
-
-.logo {
-  float: left;
-}
-
+//navbar
 .nav {
   float: right;
 }
 
-.nav li {
-  float: left;
-  line-height: 60px;
+.navbar-brand {
+  padding-left: 50px;
 }
 
-.nav a {
-  padding: 0 15px;
-  font-weight: bold;
-  text-transform: capitalize;
+//header
+
+header {
+  padding-top: 30px;
+  color: inherit;
+  background-color: #000000;
 }
 
-.login {
-  float: right;
+.info {
+  padding-top: 20px;
+  padding-bottom: 30px;
+  padding-left: 100px;
 
 }
-
-// about
-.about_index {
-}
-
-.title {
-  text-align: center;
-}
-
-.enter_picture {
-  text-align: center;
-  text-transform: capitalize;
-  color: #fff;
-}
-
-
-.enter {
-  line-height: 90px;
-}
-
-
-
-
-

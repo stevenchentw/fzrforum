@@ -1,18 +1,13 @@
-<body bgcolor="#000000">
+<body>
     <!-- Page Content -->
     <div class="container">
 
         <!-- Jumbotron Header -->
-        <header>
-           <div class = "info">
-            <font color="#FFFFFF"><h1 >歡迎! FZR STUDIO</h1></font>
-             <font color="#FFFFFF"><p>1989年台灣山葉參考國外XV250 V型雙缸引擎原型為藍本，</p></font><font color="#FFFFFF"><p>外型參考FZR250，打造一台小型化仿賽車。</p></font>
-              <font color="#FFFFFF"><p>採用了前雙碟,後單碟式煞車，中置多連桿避震器，</p></font><font color="#FFFFFF"><p>車重144KG，在彎道及高速行駛時都有極佳的穩定性,</p></font><font color="#FFFFFF"><p>超過當時市面上任何一款打檔摩托車。</p></font>
-
-
-            <p><a class="btn btn-primary btn-large">關於本站</a>
+        <header class="jumbotron hero-spacer">
+            <h1>A Warm Welcome!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+            <p><a class="btn btn-primary btn-large">Call to action!</a>
             </p>
-            </div>
         </header>
 
         <hr>
@@ -29,14 +24,25 @@
 
             <div class="col-sm-3 col-lg-3 col-md-3">
                 <div class="list-group">
-                    <button class="list-group-item"  align="center" valign = "middle" type="submit">
-                    <%= link_to "所有文章", events_path%>
-                    </button>
-                    <% @categories.each do |category| %>
-                    <button class="list-group-item" align="center" valign = "middle" type="submit" >
-                    <a><%= link_to category.name , "/events?category_id=#{category.id}" %></a>
-                    </button>
-                    <% end %>
+                    <a href="#" class="list-group-item">Category 1</a>
+                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Category 3</a>
+                    <a href="#" class="list-group-item">Category 1</a>
+                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Category 3</a>
+                    <a href="#" class="list-group-item">Category 1</a>
+                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Category 3</a>
+                    <a href="#" class="list-group-item">Category 1</a>
+                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Category 3</a>
+                    <a href="#" class="list-group-item">Category 1</a>
+                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Category 3</a>
+                    <a href="#" class="list-group-item">Category 1</a>
+                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Category 3</a>
+
                 </div>
             </div>
             <div class="col-sm-9">
@@ -253,6 +259,18 @@
   <div class = "topic_area" >
 
     <%= link_to '新增文章', new_event_path, :class => " btn btn-primary active "%>
+
+    <td>
+       <button class="btn btn-default" type="submit">
+       <%= link_to "所有文章", events_path%>
+       </button>
+
+       <% @categories.each do |category| %>
+       <button class="btn btn-default" type="submit">
+       <%= link_to category.name , "/events?category_id=#{category.id}" %>
+       </button>
+       <% end %>
+    </td>
 
     <table class ="table" border='2'>
 
