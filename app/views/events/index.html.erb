@@ -5,54 +5,101 @@
 
     <%= link_to '新增文章', new_event_path, :class => " btn btn-primary active "%>
     <p>
-        <%= search_form_for @q do |f| %>
-          <%= f.label :topic_cont,"尋找文章" %>
-          <%= f.search_field :topic_cont %>
-          <%= f.submit "Search" %>
-        <% end %>
+    <%= search_form_for @q do |f| %>
+      <%= f.label :topic_cont,"尋找文章" %>
+      <%= f.search_field :topic_cont %>
+      <%= f.submit "Search" %>
+    <% end %>
     </p>
-
 
     <td>
        <button class="btn btn-default" type="submit">
-       <%= link_to "所有文章", events_path, :remote => true %>
+       <%= link_to "所有文章", events_path%>
        </button>
+
        <% @categories.each do |category| %>
        <button class="btn btn-default" type="submit">
-       <%= link_to category.name , "/events?category_id=#{category.id}", :remote => true %>
+       <%= link_to category.name , "/events?category_id=#{category.id}" %>
        </button>
        <% end %>
     </td>
-
-
 
     <table class ="table" border='2'>
 
       <thead>
         <tr>
-          <td width="80" align="center" valign = "middle">
-          <%= sort_link(@q, :category_name,"類別") %>
+          <td width="100" align="center" valign = "middle">
+          <%= link_to events_path( :type_id => params[:type_id] , :category_id => params[:category_id] ,:sort => "category_id") do%>
+          <i class="glyphicon glyphicon-triangle-top"></i>
+          <% end %>
+
+          類別
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] ,:sort => "category_id DESC") do%>
+          <i class="glyphicon glyphicon-triangle-bottom"></i>
+          <% end %>
           </td>
-          <td width="80" align="center" valign = "middle">
-          <%= sort_link(@q, :type_id,"車種") %>
+          <td width="100" align="center" valign = "middle">
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] ,:sort => "type_id") do%>
+          <i class="glyphicon glyphicon-triangle-top"></i>
+          <% end %>
+          車種
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] ,:sort => "type_id DESC") do%>
+          <i class="glyphicon glyphicon-triangle-bottom"></i>
+          <% end %>
           </td>
-          <td width="300" align="center" valign = "middle">
-          <%= sort_link(@q, :topic,"標題") %>
+          <td width="240" align="center" valign = "middle">
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] ,:sort => "topic") do%>
+          <i class="glyphicon glyphicon-triangle-top"></i>
+          <% end %>
+          標題
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] , :sort => "topic DESC") do%>
+          <i class="glyphicon glyphicon-triangle-bottom"></i>
+          <% end %>
           </td>
-          <td width="80" align="center" valign = "middle">
-          <%= sort_link(@q, :user_id,"使用者") %>
+          <td width="120" align="center" valign = "middle">
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] , :sort => "user_id")  do%>
+          <i class="glyphicon glyphicon-triangle-top"></i>
+          <% end %>
+          使用者
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] , :sort => "user_id DESC") do%>
+          <i class="glyphicon glyphicon-triangle-bottom"></i>
+          <% end %>
           </td>
-          <td width="80" align="center" valign = "middle">
-          <%= sort_link(@q, :comments_count,"留言數") %>
+          <td width="120" align="center" valign = "middle">
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] , :sort => "comments_count") do%>
+          <i class="glyphicon glyphicon-triangle-top"></i>
+          <% end %>
+          留言數
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] , :sort => "comments_count DESC") do%>
+          <i class="glyphicon glyphicon-triangle-bottom"></i>
+          <% end %>
           </td>
-          <td width="80" align="center" valign = "middle">
-          <%= sort_link(@q, :likes_count,"馬力值") %>
+          <td width="120" align="center" valign = "middle">
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] , :sort => "likes_count") do%>
+          <i class="glyphicon glyphicon-triangle-top"></i>
+          <% end %>
+          馬力值
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] , :sort => "likes_count DESC") do%>
+          <i class="glyphicon glyphicon-triangle-bottom"></i>
+          <% end %>
           </td>
-          <td width="200" align="center" valign = "middle">
-          <%= sort_link(@q, :created_at,"發文時間") %>
+          <td width="180" align="center" valign = "middle">
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] , :sort => "created_at") do%>
+          <i class="glyphicon glyphicon-triangle-top"></i>
+          <% end %>
+          發文時間
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] , :sort => "created_at DESC") do%>
+          <i class="glyphicon glyphicon-triangle-bottom"></i>
+          <% end %>
           </td>
-          <td width="200" align="center" valign = "middle">
-          <%= sort_link(@q, :comments_created_at,"最後留言") %>
+          <td width="180" align="center" valign = "middle">
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] , :sort => "comments_created_at") do%>
+          <i class="glyphicon glyphicon-triangle-top"></i>
+          <% end %>
+          最後留言
+          <%= link_to  events_path( :type_id => params[:type_id] ,  :category_id => params[:category_id] , :sort => "comments_created_at DESC") do%>
+          <i class="glyphicon glyphicon-triangle-bottom"></i>
+          <% end %>
           </td>
           <% if current_user%>
           <td width="120" align="center" valign = "middle">操作</td>

@@ -10,11 +10,57 @@ class EventsController < ApplicationController
   def index
    @q = Event.ransack(params[:q])
    @events = @q.result(distinct: true)
+
+   @events = Event.page(params[:page]).per(8)
+
    @events = @events.where(category_id: params[:category_id]) if params[:category_id]
    @events = @events.where(type_id: params[:type_id]) if params[:type_id]
-   @events = @events.page(params[:page]).per(8)
+
    @categories = Category.all
    @types = Type.all
+
+       if params[:sort] == "type_id"
+        @events = @events.order("type_id")
+       elsif params[:sort] == "type_id DESC"
+        @events = @events.order("type_id DESC")
+
+       elsif params[:sort] == "category_id"
+        @events = @events.order("category_id")
+       elsif params[:sort] == "category_id DESC"
+        @events = @events.order("category_id DESC")
+
+       elsif params[:sort] == "topic"
+        @events = @events.order("topic")
+       elsif params[:sort] == "topic DESC"
+        @events = @events.order("topic DESC")
+
+       elsif params[:sort] == "user_id"
+        @events = @events.order("user_id")
+       elsif params[:sort] == "user_id DESC"
+        @events = @events.order("user_id DESC")
+
+       elsif params[:sort] == "comments_count"
+        @events = @events.order("comments_count")
+       elsif params[:sort] == "comments_count DESC"
+        @events = @events.order("comments_count DESC")
+
+       elsif params[:sort] == "likes_count"
+        @events = @events.order("likes_count")
+       elsif params[:sort] == "likes_count DESC"
+        @events = @events.order("likes_count DESC")
+
+       elsif params[:sort] == "created_at"
+        @events = @events.order("created_at")
+       elsif params[:sort] == "created_at DESC"
+        @events = @events.order("created_at DESC")
+
+       elsif params[:sort] == "comments_created_at"
+        @events = @events.order("comments_created_at")
+       else params[:sort] == "comments_created_at DESC"
+        @events = @events.order("comments_created_at DESC")
+
+        end
+
   end
 
   def show
