@@ -4,18 +4,20 @@
 
         <!-- Jumbotron Header -->
         <header>
-         <div class = "row ">
+         <div class = "row header_info">
            <div class="col-lg-6">
              <div class = "info">
                 <font color="#FFFFFF"><h1 >歡迎! FZR STUDIO</h1></font>
+                <br></br>
                 <font color="#FFFFFF"><p>1989年台灣山葉參考國外XV250 V型雙缸引擎原型為藍本，</p></font><font color="#FFFFFF"><p>外型參考FZR250，打造一台小型化仿賽車。</p></font>
-                <font color="#FFFFFF"><p>採用了前雙碟,後單碟式煞車，中置多連桿避震器，</p></font><font color="#FFFFFF"><p>車重144KG，在彎道及高速行駛時都有極佳的穩定性,</p></font><font color="#FFFFFF"><p>超過當時市面上任何一款打檔摩托車。</p></font>
-                <p><a class="btn btn-primary btn-large">關於本站</a>
-                </p>
+                <font color="#FFFFFF"><p>採用了前雙碟,後單碟式煞車，中置多連桿避震器，</p></font><font color="#FFFFFF"><p>車重144KG，在彎道及高速行駛時都有極佳的穩定性,</p></font><font color="#FFFFFF"><p>超過當時市面上任何一款打檔摩托車。
+                </p></font>
+                <br></br>
+                <p><a class="btn btn-primary btn-large">關於本站</a></p>
               </div>
            </div>
             <div class="col-lg-6">
-              <div class="row carousel-holder">
+              <div class="row carousel-holder ">
 
                         <div class="col-md-12">
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -26,13 +28,19 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img class="slide-image" src="http://placehold.it/600x300" alt="">
+                                        <div class="slide-image">
+                                        <%= image_tag("slide_image1.png", :size => "500x334") %>
+                                        </div>
                                     </div>
                                     <div class="item">
-                                        <img class="slide-image" src="http://placehold.it/600x300" alt="">
+                                        <div class="slide-image">
+                                        <%= image_tag("slide_image2.png", :size => "500x334") %>
+                                        </div>
                                     </div>
                                     <div class="item">
-                                        <img class="slide-image" src="http://placehold.it/600x300" alt="">
+                                        <div class="slide-image">
+                                        <%= image_tag("slide_image3.png", :size => "500x334") %>
+                                        </div>
                                     </div>
                                 </div>
                                 <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -65,11 +73,11 @@
 
             <div class="col-sm-3 col-lg-3 col-md-3">
                 <div class="list-group">
-                    <button class="list-group-item"  align="center" valign = "middle" type="submit">
+                    <button class="list-group-item">
                     <%= link_to "所有文章", events_path%>
                     </button>
                     <% @categories.each do |category| %>
-                    <button class="list-group-item" align="center" valign = "middle" type="submit" >
+                    <button class="list-group-item">
                     <a><%= link_to category.name , "/events?category_id=#{category.id}" %></a>
                     </button>
                     <% end %>

@@ -7,8 +7,7 @@
 <%= f.label :type_id, "車種: "%>
 <%= f.select :type_id, Type.all.map{ |t| [t.name, t.id] } %>
 
-<h1> <%= f.label :article, "內容: "%> </h1>
-<%= f.text_area :article %>
+<%= f.cktext_area :article, :class => 'someclass', :ckeditor => {:language => 'uk'} %>
 
 <H2> <%= f.label :logo, "上傳圖片: "%> </H2>
 <%= f.file_field :logo %>

@@ -1,3 +1,9 @@
+<head>
+
+    <script src="/ckeditor/ckeditor.js"></script>
+</head>
+
+
 <body class = "container">
 
 <% if @event.errors.any? %>
@@ -6,12 +12,10 @@
     <% end %>
  <% end %>
 
-
-<%= form_for @event, :url =>events_path do |f| %>
+<%= form_for @event, :url => events_path do |f| %>
     <%= render :partial => 'form', :locals => { :f => f } %>
     <%= f.submit "Create" %>
 <% end %>
-
 
   <p><%= link_to '回到首頁', events_path %></p>
 </body>

@@ -39,7 +39,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">FZR STUDIO</a>
+                <div class="navbar-brand">
+                <%= link_to 'FZR STUDIO', events_path %>
+                </div>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -72,7 +74,7 @@
         <!-- /.container -->
     </nav>
 
-    <div class="login" >
+    <div class="login clearfix">
       <% if current_user %>
         Hi!
         <%= link_to current_user.email, user_path(current_user),:method => :get%>
