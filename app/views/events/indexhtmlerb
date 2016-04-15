@@ -364,4 +364,13 @@
   </ul>
 </body>
 
+show 頁面 看誰有按讚
+
+  <% @likes.each do |like| %>
+    <li>
+      <%= like.user.try(:first_name) %>
+    </li>
+  <% end %>
+
+
 

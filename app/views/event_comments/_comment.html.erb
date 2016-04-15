@@ -1,7 +1,13 @@
-<li id="comment-<%= comment.id %>">
-    <%= comment.comment%> by <%= comment.user.try(:first_name) %> @ <%= comment.created_at.strftime('%F') + " " + comment.created_at.strftime('%R') %>
+<div id="comment-<%= comment.id %>">
+
+      <font size="6"> <%= comment.user.try(:first_name) %> </font>
+
+      <%= comment.created_at.strftime('%F') + " " + comment.created_at.strftime('%R') %>
+
       <% if current_user && comment.user == current_user %>
-        <%= link_to 'edit', edit_event_comment_path(@event, comment) %>
-        <%= link_to "Delete", event_comment_path(@event, comment), :method => :delete, :remote => true %>
-      <% end %>
- </li>
+         <%= link_to 'edit', edit_event_comment_path(@event, comment) %>
+         <%= link_to "Delete", event_comment_path(@event, comment), :method => :delete, :remote => true %>
+       <% end %>
+
+      <p><font size="4"><%= comment.comment%></p></font>
+ </div>

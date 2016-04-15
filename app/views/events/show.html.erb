@@ -1,43 +1,112 @@
 <body class = "container">
 
-  <P> 這是標題：<%= @event.topic %></P>
-  <P> 這是種類：<%= @event.category_name  %></P>
-  <p> 車種: <%= @event.type.try(:name) %><p>
-  <P> 這是內容：<%= simple_format(@event.article) %> </P>
-  <P> 留言數量：<%= @event.comments.count %></P>
+    <div class="container">
 
-  <% if @event.logo.exists? %>
-    <%= image_tag ( @event.logo.url) %>
-  <% else %>
-     None
-  <% end %>
+        <div class="row">
+            <div class="col-lg-8">
+                <font size="7"><%= @event.topic %></font>
+
+                <!-- Author -->
+                <div class="lead">
+                    by <%= @event.user.first_name  %>
+
+                  <% like = @event.finy_like_by(current_user) %>
+                  <div id="like-area">
+                  <%= render :partial => "like", :locals => { :like => like } %>
+                  </div>
+                </div>
+
+                <hr>
+                <b><span class="glyphicon glyphicon-time"></span>
+                <%= @event.created_at.strftime('%F') + " " +@event.created_at.strftime('%R') %>
+                </b>
+                  <b> #<%= @event.type.try(:name) %><b>
+                  <b> #<%= @event.category_name  %></b>
+                <hr>
+                <%= simple_format(@event.article) %>
+                <hr>
+                      <div class="well">
+                          <font size="4">留言(<%= @event.comments.count %>) :</font>
+
+                          <form role="form">
+                              <div class="form-group">
+                                  <textarea class="form-control" rows="3"></textarea>
+                              </div>
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+                      </div>
+
+                      <%= form_for @comment, :url => event_comments_path(@event), :remote => true do |f| %>
+                      <%= f.text_field :comment %>
+                      <%= f.submit %>
+                      <% end %>
+
+                      <hr>
+                      <ul id="comments-list">
+                      <% @comments.each do |comment| %>
+                      <%= render :partial => "event_comments/comment", :locals => { :comment => comment } %>
+                      <% end %>
+                      </ul>
+                      </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Blog Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <h4>Side Widget Well</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
 
 
-  <% like = @event.finy_like_by(current_user) %>
-  <div id="like-area">
-  <%= render :partial => "like", :locals => { :like => like } %>
-  </div>
-
-
-<p> 誰按過讚? </p>
-  <% @likes.each do |like| %>
-    <li>
-      <%= like.user.try(:first_name) %>
-    </li>
-  <% end %>
-
-
-  <%= form_for @comment, :url => event_comments_path(@event), :remote => true do |f| %>
-     <%= f.text_field :comment %>
-     <%= f.submit %>
-  <% end %>
-
-
-  <ul id="comments-list">
-  <% @comments.each do |comment| %>
-    <%= render :partial => "event_comments/comment", :locals => { :comment => comment } %>
-  <% end %>
-  </ul>
-  <p><%= link_to '回到首頁', events_path %></p>
+    </div>
 
 </body>

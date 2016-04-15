@@ -17,7 +17,12 @@ class EventsController < ApplicationController
    @categories = Category.all
    @types = Type.all
 
-       if params[:sort] == "type_id"
+       if params[:sort] == "created_at DESC"
+        @events = @events.order("created_at DESC")
+       elsif params[:sort] == "created_at"
+        @events = @events.order("created_at ")
+
+       elsif params[:sort] == "type_id"
         @events = @events.order("type_id")
        elsif params[:sort] == "type_id DESC"
         @events = @events.order("type_id DESC")
@@ -46,11 +51,6 @@ class EventsController < ApplicationController
         @events = @events.order("likes_count")
        elsif params[:sort] == "likes_count DESC"
         @events = @events.order("likes_count DESC")
-
-       elsif params[:sort] == "created_at"
-        @events = @events.order("created_at")
-       elsif params[:sort] == "created_at DESC"
-        @events = @events.order("created_at DESC")
 
        elsif params[:sort] == "comments_created_at"
         @events = @events.order("comments_created_at")

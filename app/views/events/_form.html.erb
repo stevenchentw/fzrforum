@@ -7,13 +7,8 @@
 <%= f.label :type_id, "車種: "%>
 <%= f.select :type_id, Type.all.map{ |t| [t.name, t.id] } %>
 
-<%= f.cktext_area :article, :class => 'someclass', :ckeditor => {:language => 'uk'} %>
+<%= f.cktext_area :article, :class => 'someclass', :ckeditor => {:language => 'zh-tw'} %>
 
-<H2> <%= f.label :logo, "上傳圖片: "%> </H2>
-<%= f.file_field :logo %>
-<% if @event.logo.exists? %>
- <p> <%= check_box_tag "_remove_logo", "1" %>刪除照片 </p>
-<% end %>
 
 
 

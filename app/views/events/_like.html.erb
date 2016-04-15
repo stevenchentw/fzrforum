@@ -1,4 +1,4 @@
-<h2> <p> <font size="5"> 馬力值: <%= @event.likes.count %> hp </font> </h2>
+<font size="5"> 馬力值: <%= @event.likes.count %> hp </font>
 
 <% if like %>
 <%= link_to " -1 hp", event_like_path(@event, like),:remote => true, :method => :delete, :class => "btn btn-danger btn-lg" %>
