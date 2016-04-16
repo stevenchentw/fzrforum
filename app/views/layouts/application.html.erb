@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.masonry.min.js"></script>
 </head>
 
 <script>
@@ -89,6 +91,7 @@
 
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:alert] %></p>
+
 <%= yield %>
 
         <footer>
@@ -99,6 +102,6 @@
             </div>
         </footer>
 </body>
-
+</div>
 </html>
 

@@ -1,0 +1,19 @@
+
+<tr>
+  <td align="center" valign = "middle"><%= event.category_name %> </td>
+  <td align="center" valign = "middle"><%= event.type.try(:name)%> </td>
+  <td><%=link_to event.topic, event_path(event) %> </td>
+  <td align="center" valign = "middle"><%= event.user.first_name %> </td>
+  <td align="center" valign = "middle"><%= event.comments.count %> </td>
+  <td align="center" valign = "middle"><%= event.likes.count %> </td>
+  <td align="center" valign = "middle"><%= event.created_at.strftime('%F') + " " +event.created_at.strftime('%R') %> </td>
+  <td align="center" valign = "middle"><%= display_comments_created_at_time(event) %> </td>
+  <% if current_user %>
+  <td align="center" valign = "middle">
+  <% end %>
+  <% if current_user && event.user == current_user %>
+    <%= link_to '修改', edit_event_path(event) %>
+    <%= link_to '刪除', event_path(event),:method => :delete  %>
+  </td>
+  <% end %>
+</tr>

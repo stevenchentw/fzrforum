@@ -1,19 +1,25 @@
+<div class="masonryitem">
 
-<tr>
-  <td align="center" valign = "middle"><%= event.category_name %> </td>
-  <td align="center" valign = "middle"><%= event.type.try(:name)%> </td>
-  <td><%=link_to event.topic, event_path(event) %> </td>
-  <td align="center" valign = "middle"><%= event.user.first_name %> </td>
-  <td align="center" valign = "middle"><%= event.comments.count %> </td>
-  <td align="center" valign = "middle"><%= event.likes.count %> </td>
-  <td align="center" valign = "middle"><%= event.created_at.strftime('%F') + " " +event.created_at.strftime('%R') %> </td>
-  <td align="center" valign = "middle"><%= display_comments_created_at_time(event) %> </td>
-  <% if current_user %>
-  <td align="center" valign = "middle">
-  <% end %>
-  <% if current_user && event.user == current_user %>
-    <%= link_to '修改', edit_event_path(event) %>
-    <%= link_to '刪除', event_path(event),:method => :delete  %>
-  </td>
-  <% end %>
-</tr>
+    <div class="thumbnail">
+        <img src="http://placehold.it/320x150" alt="">
+        <div class="caption">
+            <h4 class="pull-right"> <%= event.user.first_name %> </h4>
+            <h4> <%=link_to event.topic, event_path(event) %></a>
+            </h4>
+            <p>See more snippets like this online store item at</p>
+        </div>
+
+
+        <div class="ratings">
+        <p class="pull-right"><%= event.comments.count %> comments</p>
+        <p>
+        <%= event.likes.count %>
+        <% if current_user && event.user == current_user %>
+        <%= link_to '修改', edit_event_path(event) %>
+        <%= link_to '刪除', event_path(event),:method => :delete  %>
+        <% end %>
+        </p>
+
+        </div>
+    </div>
+</div>

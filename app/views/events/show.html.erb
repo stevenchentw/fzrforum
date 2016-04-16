@@ -11,9 +11,11 @@
                     by <%= @event.user.first_name  %>
 
                   <% like = @event.finy_like_by(current_user) %>
+
                   <div id="like-area">
                   <%= render :partial => "like", :locals => { :like => like } %>
                   </div>
+
                 </div>
 
                 <hr>
@@ -26,27 +28,24 @@
                 <%= simple_format(@event.article) %>
                 <hr>
                       <div class="well">
-                          <font size="4">留言(<%= @event.comments.count %>) :</font>
+                        <div id= "comments_count">
+                          <font size="4">留言(  <%= @event.comments.count %> ):</font>
+                        </div>
 
-                          <form role="form">
-                              <div class="form-group">
-                                  <textarea class="form-control" rows="3"></textarea>
-                              </div>
-                              <button type="submit" class="btn btn-primary">Submit</button>
-                          </form>
+                        <%= form_for @comment, :url => event_comments_path(@event), :class => "form-group", :remote => true do |f| %>
+                        <%= f.text_area :comment, rows: 3, class: "form-control" %>
+                        <%= f.submit "submit" , :class => "btn btn-primary" %>
+                        <% end %>
                       </div>
 
-                      <%= form_for @comment, :url => event_comments_path(@event), :remote => true do |f| %>
-                      <%= f.text_field :comment %>
-                      <%= f.submit %>
-                      <% end %>
-
                       <hr>
+
                       <ul id="comments-list">
                       <% @comments.each do |comment| %>
                       <%= render :partial => "event_comments/comment", :locals => { :comment => comment } %>
                       <% end %>
                       </ul>
+
                       </div>
 
             <!-- Blog Sidebar Widgets Column -->
