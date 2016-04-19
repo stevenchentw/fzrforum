@@ -1,0 +1,27 @@
+<h1>Product List</h1>
+
+<p>
+  <%= link_to "結帳!", new_order_path, :class => "btn btn-primary" %>
+</p>
+
+<div id="cart">
+ <%= render "cart" %>
+</div>
+
+<% @products.each do |p| %>
+
+
+    <div class="item">
+
+      <%= link_to product_path(p) do %>
+        <%= p.name %>
+      <% end %>
+
+
+      $<%= p.price %>
+
+    </div>
+
+ <%= button_to "Buy", buy_product_path(p), :class => "btn btn-danger btn-xs", :method => :post, :remote => true  %>
+
+<% end %>

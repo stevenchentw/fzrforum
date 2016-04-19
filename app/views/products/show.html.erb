@@ -1,0 +1,16 @@
+<div id="cart">
+ <%= render "cart" %>
+</div>
+
+<h1><%= @product.name %></h1>
+
+
+<%= form_tag buy_product_path(@product), :remote => true do %>
+
+   <%= select_tag "qty", options_for_select( 1..10 ) %>
+   <%= submit_tag "Buy", :class => "btn btn-danger btn-xs" %>
+
+<% end %>
+
+<%= @product.price %>
+<%= simple_format @product.description %>

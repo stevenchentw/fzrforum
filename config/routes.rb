@@ -5,7 +5,22 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+    resources :orders
+
+    namespace :admin do
+      resources :orders
+    end
+
+
+    resources :products do
+      member do
+        post :buy
+        post :cancel
+       end
+    end
     resources :users
+
+
     resources :events do
       resources :comments, :controller => 'event_comments'
       resources :likes
