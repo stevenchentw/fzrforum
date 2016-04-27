@@ -73,6 +73,7 @@ class EventsController < ApplicationController
   end
 
   def create
+
     @event = Event.new(event_params)
 
     @event.user = current_user
